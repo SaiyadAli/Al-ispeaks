@@ -1,6 +1,7 @@
 import express from "express"
 import bodyParser from "body-parser"
 import nodemailer from "nodemailer"
+import _ from "lodash"
 
 const port =3000
 const app =express()
@@ -15,6 +16,17 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.get("/",(req,res)=>{
     res.render("home",{arr})
 })
+app.get("/posts/:topic",(req,res)=>{
+  for(let values of arr){
+   if(_.lowerCase(values.title) == _.lowerCase(req.params.topic)){
+     res.render("post",{title :values.title,content:values.bContent})
+   }else{
+    console.log("not found")
+   }
+  }
+  
+})
+
 app.get("/contact",(req,res)=>{
     res.render("contact",{value})
     value=0
@@ -65,6 +77,7 @@ let transporter = nodemailer.createTransport({
   })
 
 app.post("/compose",(req,res)=>{
+  console.log(req.body)
   arr.push(req.body)
   if(arr){
      res.redirect("/compose")

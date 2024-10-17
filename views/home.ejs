@@ -24,11 +24,11 @@
                             <div class="card-body">
                                 
                                     <h2 class="card-title"><%=values.title %></h2>
-                                    <p class="card-text"><%=values.bContent %></p>
+                                    <p class="card-text"><%=values.bContent.substring(0,100)+" ..."  %></p>
                                 
                                
                             </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="/posts/<%= values.title%>">More Info</a></div>
                         </div>
                     </div>
                 <% } %>
