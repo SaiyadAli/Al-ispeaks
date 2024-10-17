@@ -1,0 +1,73 @@
+<%- include('parsels/header') %>
+<link href="css/contact.css" rel="stylesheet" />
+<form class="intro" action="/contact" method="post">
+    <div class="bg-image-vertical h-100" style="background-color: #3ba2e7;">
+      <div class="mask d-flex align-items-center h-100">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+              <div class="card" style="border-radius: 1rem;">
+                <div class="card-body p-5">
+  
+                  <h1 class="mb-5 text-center">Contact Me!</h1>
+                   <% if (value) { %>
+                    <div class="alert alert-success">
+                      <strong>Success!</strong> Your message has been sent successfully.
+                      
+                    </div>
+                   <% value=0 %>
+                   <% } %>
+                  <form>
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                    <div class="row">
+                      <div class="col-12 col-md-6 mb-4">
+                        <div class="form-outline">
+                          <input type="text" id="form6Example1" class="form-control" name="fName"/>
+                          <label class="form-label" for="form6Example1" >First name</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6 mb-4">
+                        <div class="form-outline">
+                          <input type="text" id="form6Example2" class="form-control" name="lName"/>
+                          <label class="form-label" for="form6Example2" >Last name</label>
+                        </div>
+                      </div>
+                    </div>
+  
+                   
+  
+                  
+  
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                      <input type="email" id="form6Example5" class="form-control" name="email"/>
+                      <label class="form-label" for="form6Example5" >Email</label>
+                    </div>
+  
+                    <!-- Number input -->
+                    <div class="form-outline mb-4">
+                      <input type="number" id="form6Example6" class="form-control" name="phone"/>
+                      <label class="form-label" for="form6Example6" >Phone</label>
+                    </div>
+  
+                    <!-- Message input -->
+                    <div class="form-outline mb-4">
+                      <textarea class="form-control" id="form6Example7" rows="4" name="tContent"></textarea>
+                      <label class="form-label" for="form6Example7">Type your Message...</label>
+                    </div>
+  
+                  
+  
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-success btn-rounded btn-block">Submit</button>
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</form>
+<%- include('parsels/footer') %>
