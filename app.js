@@ -4,7 +4,8 @@ import nodemailer from "nodemailer"
 
 const port =3000
 const app =express()
-let value =0
+let value =0,cvalue=0;
+let arr =[]
 app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({extended: true}))
@@ -12,7 +13,7 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.get("/",(req,res)=>{
-    res.render("home")
+    res.render("home",{arr})
 })
 app.get("/contact",(req,res)=>{
     res.render("contact",{value})
@@ -58,8 +59,18 @@ let transporter = nodemailer.createTransport({
    
   });
 
+  app.get("/compose",(req,res)=>{
+     res.render("compose",{cvalue})
+     cvalue=0
+  })
 
-
+app.post("/compose",(req,res)=>{
+  arr.push(req.body)
+  if(arr){
+     res.redirect("/compose")
+     cvalue=1
+  }
+})
 
 
 app.listen(port,()=>console.log(`Server is running in port ${port}`))
